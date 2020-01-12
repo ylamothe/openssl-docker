@@ -6,4 +6,7 @@ RUN apk update && \
   apk add --no-cache openssl && \
   rm -rf /var/cache/apk/*
 
-ENTRYPOINT ["openssl"]
+COPY openssl.sh /usr/local/bin/openssl.sh
+RUN chmod a+x /usr/local/bin/openssl.sh
+
+ENTRYPOINT ["/usr/local/bin/openssl.sh"]
